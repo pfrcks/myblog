@@ -1,0 +1,38 @@
+baseurl = "/"
+languageCode = "en-us"
+title = "lost in compilation"
+theme = "hugo-xmin"
+googleAnalytics = "UA-81694981-2"
+disqusShortname = "pfrcks"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+preserveTaxonomyNames = true
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+    post = "/blog/:slug/"
+    note = "/note/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+#[[menu.main]]
+    #name = "tags"
+    #url = "/tags/"
+    #weight = 4
+
+[params]
+    description = "maybe it is somthing more than curve fitting?"
+    footer = "&copy; [Amol Agrawal](https://linkedin.com/in/aagrawal92) 2017 -- 2018 | [Github](https://github.com/pfrcks) | [Twitter](https://twitter.com/pfrcks) | [Subscribe](/index.xml)"
