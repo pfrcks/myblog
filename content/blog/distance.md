@@ -23,11 +23,23 @@ To call KL divergence a distance is like calling tomato a vegetable. KL divergen
 
 `$$D_{KL}(p(x)||q(x)) = \sum_{x \in X} p(x) \ln \frac{p(x)}{q(x)}$$`
 
-In terms of information theory, KL divergence measures the expected number of extra bits required to code samples from distribution `$p(x)` when using code based on `$q(x)$`. Another way to think about this is that `$p(x)` is the **true** distribution of data and `$q(x)$` is our **approximation** of it.
+In terms of information theory, KL divergence measures the expected number of extra bits required to code samples from distribution `$p(x)$` when using code based on `$q(x)$`. Another way to think about this is that `$p(x)$` is the **true** distribution of data and `$q(x)$` is our **approximation** of it.
 
 Even though it looks like KL divergence measures **distance** between two probability distributions, it is not a distance measure. KL divergence is neither symmetric not does it satisfy the triangle inequality. It is however non-negative.
 
 If it is not a distance metric, then how is it used? In the formula presented above, the true distribution is often intractable. Therefore by minimizing the KL divergence by using tractable approximated distributions we can get an approximate distribution from which samples can be drawn.
+
+As a toy example let's take a 6 sided weighted die such that the true probabilities are given by `$p=[0.1, 0.2, 0.2, 0.1, 0.25, 0.15]$`. If we try to model it using a uniform distribution, our `$q$` becomes `$[0.166, 0.166, 0.166, 0.166, 0.166, 0.166]$`
+![Image](kl.png)
+```python
+import numpy as np
+
+def kl_div(p, q):
+    p = np.asarray(p, dtype=np.float)
+    q = np.asarray(q, dtype=np.float)
+
+    return np.sum(np.where(p!=0, p*np.log(p/q), 0))
+```
 
 ## Distance metrics in the wild
 
