@@ -29,8 +29,13 @@ Even though it looks like KL divergence measures **distance** between two probab
 
 If it is not a distance metric, then how is it used? In the formula presented above, the true distribution is often intractable. Therefore by minimizing the KL divergence by using tractable approximated distributions we can get an approximate distribution from which samples can be drawn.
 
-As a toy example let's take a 6 sided weighted die such that the true probabilities are given by `$p=[0.1, 0.2, 0.2, 0.1, 0.25, 0.15]$`. If we try to model it using a uniform distribution, our `$q$` becomes `$[0.166, 0.166, 0.166, 0.166, 0.166, 0.166]$`
-![Image](kl.png)
+As a toy example let's take a 6 sided weighted dice such that the true probabilities are given by `$$p=[0.1, 0.2, 0.2, 0.1, 0.25, 0.15]$$`. If we try to model it using a uniform distribution, our `$q$` becomes `$$q=[0.166, 0.166, 0.166, 0.166, 0.166, 0.166]$$`.
+
+The figure below shows the barplot for the same
+
+![Image](https://raw.githubusercontent.com/pfrcks/myblog/master/images/kl.png
+
+We can write a simple code snippet which can help us calculate the KL divergence between two distributions.(Disclaimer: For a much robust implementation refer to the scipy package)
 ```python
 import numpy as np
 
@@ -41,6 +46,15 @@ def kl_div(p, q):
     return np.sum(np.where(p!=0, p*np.log(p/q), 0))
 ```
 
+Using our toy example,
+```python
+>>print(kl_div(p, q))
+0.0603337190402897
+>>print(kl_div(q, p))
+0.055253998576011196
+```
+
+This non symmetric nature of KL divergence as discussed above is one of the reasons it is not a distance metric.
 ## Distance metrics in the wild
 
 As expected Euclidean distance is perhaps the most used distance metric. We commonly utilize it for ML algorithms like KNN, K-Means, etc. Cosine distance is another heavily utilized metric used prominently in calculating similarity in NLP based tasks. But how does the choice of distance metric effect the model?
