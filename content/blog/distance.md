@@ -15,11 +15,11 @@ For a function to be a distance function, it has to satisfy the following proper
 - Symmetry       : `$d(x, y) = d(y, x)$`
 - Triangle Inequality : `$d(x, z) \leq d(x, y) + d(y, z)$`
 
-Some of the distance functions which we went over in class were `$L_p$` distances, Jaccard Distance, Cosine Distance and Edit distance. {TODO: refer class notes}. Now let's take a look at one another kind of _distance_ and then let's take a look at what happens to distances in high dimensional spaces.
+Some of the distance functions which we went over in class were `$L_p$` distances, Jaccard Distance, Cosine Distance and Edit distance. Now let's take a look at one another kind of _distance_ and then let's take a look at what happens to distances in high dimensional spaces.
 
 ## I: Kullback–Leibler divergence
 
-To call KL divergence a distance is like calling tomato a vegetable. KL divergence is used to measure the difference between two probability distributions over the same random variable x.
+KL divergence is used to measure the difference between two probability distributions over the same random variable x.
 
 `$$D_{KL}(p(x)||q(x)) = \sum_{x \in X} p(x) \ln \frac{p(x)}{q(x)}$$`
 
