@@ -1,6 +1,14 @@
 ---
 title: "Distance Metrics and Beyond"
+author: Amol Agrawal
 date: 2018-11-28T13:52:38-05:00
+categories:
+  - ml
+tags:
+  - distance
+  - kl divergence
+description: "Some notes on Distance functions, KL Divergence, and Curse of
+Dimensionality"
 draft: false
 ---
 
@@ -8,7 +16,8 @@ draft: false
 
 A distance function(also referred as a metric) in mathematics refers to the function that defines a distance between any two points of a set. The most prevalent example is the Euclidean distance. But let's first define what makes a function a distance function.
 
-For a function to be a distance function, it has to satisfy the following properties:
+For a function to be a distance function, it has to satisfy the following properties`$^{[1]}$`
+:
 
 - Non-negativity : `$d(x, y) \geq 0$`
 - Identity       : `$d(x, y) = 0 \iff x=y$`
@@ -23,7 +32,7 @@ KL divergence is used to measure the difference between two probability distribu
 
 `$$D_{KL}(p(x)||q(x)) = \sum_{x \in X} p(x) \ln \frac{p(x)}{q(x)}$$`
 
-In terms of information theory, KL divergence measures the expected number of extra bits required to code samples from distribution `$p(x)$` when using code based on `$q(x)$`. Another way to think about this is that `$p(x)$` is the **true** distribution of data and `$q(x)$` is our **approximation** of it.
+In terms of information theory, KL divergence measures the expected number of extra bits required to code samples from distribution `$p(x)$` when using code based on `$q(x)$`. Another way to think about this is that `$p(x)$` is the **true** distribution of data and `$q(x)$` is our **approximation** of it. `$^{[2]}$`
 
 Even though it looks like KL divergence measures **distance** between two probability distributions, it is not a distance measure. KL divergence is neither symmetric not does it satisfy the triangle inequality. It is however non-negative.
 
@@ -97,8 +106,8 @@ However, the problem becomes much more severe when the number of dimensions star
 
 Extending from the analysis for KNN explained above, let us try to consider a nearest-neighbor estimate of a point at the origin on a p dimensional space. Consider that there are N points that are uniformly distributed in this p dimensional unit ball around the point at center. Given this situation, let us try to compute the median distance of the closest data point to the center.
 
-The volume in the space more that a distance `$kr$` from the center where `$r$` is the radius of the ball, is proportional to `$$\frac{r^{p} - (kr)^{p}}{r^{p}} = 1 - k^{p}$$`
-Probability that N points are away with a distance greater than `$kr$` is `$(1 - k^{p})^{N}$`. So, to get the median distance of nearest point from center, set this probability to 0.5
+The volume in the space more than a distance `$kr$` from the center where `$r$` is the radius of the ball, is proportional to `$$\frac{r^{p} - (kr)^{p}}{r^{p}} = 1 - k^{p}$$`
+Probability that N points are at a distance greater than `$kr$` is `$(1 - k^{p})^{N}$` `$^{[3]}$`. So, to get the median distance of nearest point from center, set this probability to 0.5
 `$$(1 - k^{p})^{N} = \frac{1}{2}$$`
 `$$\implies k = (1 - \frac{1}{2}^{\frac{1}{N}})^\frac{1}{p} $$`
 
@@ -109,3 +118,9 @@ This can be corroborated by the following experiment, where 1000 points of p dim
 ![Image](https://raw.githubusercontent.com/pfrcks/myblog/master/images/Fig.png)
 
 We can see that the distances have become more concentrated as p increases from what we expected above and gives us the idea that it becomes more and more difficult to cluster points based on mere distance. Even though real data wouldn't have independent and uniformly distributed dimensions, the probability that different points have similar distances is definitely higher.
+
+### References
+
+1. https://www.cs.utah.edu/~jeffp/teaching/cs5955/L7-Distances.pdf
+2. http://hanj.cs.illinois.edu/cs412/bk3/KL-divergence.pdf
+3. https://web.stanford.edu/~hastie/ElemStatLearn/

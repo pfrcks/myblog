@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "lost in compilation"
+title = "Lost in Compilation"
 theme = "hugo-xmin"
 googleAnalytics = "UA-81694981-2"
 disqusShortname = "pfrcks"
@@ -9,30 +9,31 @@ preserveTaxonomyNames = true
 footnotereturnlinkcontents = "↩"
 
 [permalinks]
-    post = "/blog/:slug/"
-    note = "/note/:slug/"
+    post = "/posts/:slug/"
+    note = "/notes/:slug/"
 
 [[menu.main]]
     name = "Home"
     url = "/"
     weight = 1
 [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
+    name = "Posts"
+    url = "/posts/"
     weight = 2
 [[menu.main]]
     name = "Categories"
     url = "/categories/"
     weight = 3
 [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+[[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 4
-#[[menu.main]]
-    #name = "tags"
-    #url = "/tags/"
-    #weight = 4
+    weight = 5
 
 [params]
     description = "maybe it is somthing more than curve fitting?"
-    footer = "&copy; [Amol Agrawal](https://linkedin.com/in/aagrawal92) 2017 -- 2018 | [Github](https://github.com/pfrcks) | [Twitter](https://twitter.com/pfrcks) | [Subscribe](/index.xml)"
+    summary_length = 300
+    footer = "&copy; [Amol Agrawal](https://linkedin.com/in/aagrawal92) 2017 -- 2019 | [Github](https://github.com/pfrcks) | [Twitter](https://twitter.com/pfrcks) | [Subscribe](/index.xml)"
